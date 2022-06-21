@@ -1,6 +1,5 @@
 window._ = require('lodash');
 
-
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -11,16 +10,8 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('jquery.easing')
     require('bootstrap');
-    require('select2');
-
-    $('select').select2({
-        theme: 'bootstrap4',
-    })
-
-} catch (e) {
-}
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

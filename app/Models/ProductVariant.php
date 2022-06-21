@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductVariant extends Model
 {
-
+    public function varient(){
+        return $this->hasMany(Variant::class);
+    }
 }
