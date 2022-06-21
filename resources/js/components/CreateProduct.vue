@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Product Name</label>
-                            <input type="text" v-model="product_name" placeholder="Product Name" class="form-control">
+                            <input type="text" v-model="product_name" value="{{ $variants }}" placeholder="Product Name" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="">Product SKU</label>
@@ -39,7 +39,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Option</label>
-                                    <select v-model="item.option" class="form-control">
+                                    <select v-model="item.option"  class="form-control">
                                         <option v-for="variant in variants"
                                                 :value="variant.id">
                                             {{ variant.title }}
@@ -147,6 +147,14 @@ export default {
             })
         },
 
+        updateProduct(id) {
+            try{
+                axios.update(` product/{product}/${id}`)
+                . then(res => this.product_variant)
+            } catch (e) {
+                
+            }
+        }
         // check the variant and render all the combination
         checkVariant() {
             let tags = [];
@@ -190,12 +198,12 @@ export default {
 
 
             axios.post('/product', product).then(response => {
-                console.log(response.data);
+                console.log(response.data.product_variant);
             }).catch(error => {
                 console.log(error);
             })
 
-            console.log(product);
+            // console.log(product);
         }
 
 
